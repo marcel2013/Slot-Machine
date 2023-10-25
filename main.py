@@ -7,6 +7,7 @@ MIN_BET = 1
 ROWS = 3
 COLS = 3
 
+# Dictionary defining the count of each symbol in the slot machine
 symbol_count = {
     "😎": 2,
     "🥳": 4,
@@ -14,6 +15,7 @@ symbol_count = {
     "😆": 8
 }
 
+# Dictionary defining the value of each symbol in the slot machine
 symbol_value = {
     "😎": 5,
     "🥳": 4,
@@ -21,7 +23,7 @@ symbol_value = {
     "😆": 2
 }
 
-
+# Function to check for winnings on different lines and calculate the total winnings
 def check_winnsings(columns, lines, bet, values):
     winnings = 0
     winning_lines = []
@@ -37,7 +39,7 @@ def check_winnsings(columns, lines, bet, values):
 
     return winnings, winning_lines
 
-
+# Function to generate a random slot machine spin
 def get_slot_machine_spin(rows, cols, symbols):
     all_symbols = []
     for symbol, symbol_count in symbols.items():
@@ -57,7 +59,7 @@ def get_slot_machine_spin(rows, cols, symbols):
 
     return columns
 
-
+# Function to print the current state of the slot machine
 def print_slot_machine(columns):
     for row in range(len(columns[0])):
         for i, column in enumerate(columns):
@@ -68,7 +70,7 @@ def print_slot_machine(columns):
 
         print()
 
-
+# Function to prompt the user for the initial deposit
 def deposit():
     while True:
         amount = input("What would you like to deposit? $ ")
@@ -83,7 +85,7 @@ def deposit():
 
     return amount
 
-
+# Function to prompt the user for the number of lines to bet on
 def get_numer_of_lines():
     while True:
         lines = input(
@@ -99,7 +101,7 @@ def get_numer_of_lines():
 
     return lines
 
-
+# Function to prompt the user for the bet amount
 def get_bet():
     while True:
         amount = input("What would you like to beton each line? $ ")
@@ -114,7 +116,7 @@ def get_bet():
 
     return amount
 
-
+# Function to simulate a slot machine spin and calculate winnings
 def spin(balance):
     lines = get_numer_of_lines()
     while True:
@@ -138,7 +140,7 @@ def spin(balance):
     print(f"You won on lines:", *winnings_lines)
     return winnings - total_bet
 
-
+# Main game loop
 def main():
     balance = deposit()
     while True:
@@ -149,5 +151,5 @@ def main():
         balance += spin(balance)
     print(f"You left with ${balance}")
 
-
+# Entry point to start the game
 main()
